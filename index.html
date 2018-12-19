@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+  
+</head>
+<body>
+    <script>
+    
+    // playerChoice = prompt("Make your choice: rock, scissor or paper");
+    // playerChoice = playerChoice.toLowerCase();
+
+    function computerPlay () {
+        myArray = ["rock", "paper","scissor"];
+        mySelector = Math.floor(Math.random() * 3);
+        alert('Computer Selected ' + myArray[mySelector]);
+        return myArray[mySelector];
+    }
+
+    function playRound(playerSelection, computerSelection) {
+        var pWins = 0;
+        var cWins = 0;
+	    if (playerSelection == computerSelection) {
+            alert("It's a draw");
+            return [ pWins, cWins ];
+        } else if ( playerSelection == "rock") {
+            if ( computerSelection == "scissor") {
+                alert( "Player Wins" );
+                pWins++
+                return [ pWins, cWins ];
+            } else {
+                alert("Computer Wins");
+                cWins++
+                return [pWins, cWins];
+            }
+        } else if (playerSelection == "scissor") {
+            if (computerSelection == "paper") {
+                alert("Player Wins");
+                pWins++
+                return [pWins, cWins];
+            } else {
+                alert("Computer Wins");
+                cWins++
+                return [pWins, cWins];
+            }
+        } else {
+            if (computerSelection== "rock") {
+                alert("Player Wins");
+                pWins++;
+                return [pWins, cWins];
+            } else {
+                alert("Computer Wins");
+                cWins++
+                return [pWins, cWins];
+            }
+        }
+    }
+    var x;
+    function game(rounds){
+        var playerGameWins = 0;
+        var computerGameWins = 0;
+        for (x = 1; x <= rounds; x++)
+        { 
+            playerChoice = prompt("Make your choice: rock, scissor or paper");
+            playerChoice = playerChoice.toLowerCase(); 
+            computerSelection = computerPlay();
+            var roundResult = playRound(playerChoice, computerSelection);
+            playerGameWins += roundResult[0];
+            computerGameWins += roundResult[1];
+        }
+        return ([playerGameWins, computerGameWins]);
+    }
+ 
+let gameResult = game(2);
+let gameWinner = "Player";
+
+if ( gameResult[0] > gameResult[1] ) {
+    gameWinner = "Player Wins";
+    // alert( "Player Won " + gameResult[0] + " times. " + '\n' +  "Computer Won " + gameResult[1] + " times. " + "Player Wins" );
+} else if ( gameResult[0] < gameResult[1] ) {
+    gameWinner = "Computer Wins";
+    // alert("Player Won " + gameResult[0] + " times. " + "Computer Won " + gameResult[1] + " times. " + "Computer Wins" );
+} else {
+    gameWinner = "It is a draw";
+    // alert( "Player Won " + gameResult[0] + " times. " + "Computer Won " + gameResult[1] + " times. " + "It is a tie" );
+}
+
+alert( "Player Won " + gameResult[0] + " times. " + '\n' + "Computer Won "  + gameResult[1] + " times. " + '\n' + gameWinner );
+
+
+
+    //const playerSelection = 'Rock';
+    // const computerSelection = computerPlay();
+    //console.log(playRound(playerChoice, computerSelection));
+    console.log()
+    </script>
+</body>
